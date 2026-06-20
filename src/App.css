@@ -1,0 +1,221 @@
+.app {
+  min-height: 100dvh;
+  background: linear-gradient(160deg, #12002e 0%, #3b0764 35%, #6b1a5a 70%, #9b2d5a 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+/* ── 떠다니는 하트 ── */
+.hearts-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -30px;
+  color: rgba(255, 150, 185, 0.35);
+  animation: floatUp linear infinite;
+  user-select: none;
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0) rotate(-10deg) scale(1);   opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 0.6; }
+  100% { transform: translateY(-110vh) rotate(20deg) scale(0.6); opacity: 0; }
+}
+
+/* ── 반짝이 ── */
+.sparkles-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.sparkle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 220, 235, 0.6);
+  animation: twinkle ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50%       { opacity: 1; transform: scale(1); }
+}
+
+/* ── 본문 ── */
+.content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.8rem;
+  padding: 2.5rem 1.5rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ── 상단 뱃지 ── */
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 170, 200, 0.25);
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.8rem;
+  color: rgba(255, 210, 225, 0.85);
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+}
+
+.badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #ff8cb5;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 140, 181, 0.6); }
+  50%       { box-shadow: 0 0 0 6px rgba(255, 140, 181, 0); }
+}
+
+/* ── 카운터 ── */
+.counter-section {
+  text-align: center;
+}
+
+.counter-label {
+  font-size: 1rem;
+  color: rgba(255, 210, 230, 0.75);
+  letter-spacing: 0.12em;
+  margin-bottom: 0.3rem;
+}
+
+.counter {
+  font-size: clamp(5rem, 22vw, 8.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffb3d1 0%, #ff78a8 50%, #ffcce0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 40px rgba(255, 120, 168, 0.45));
+  margin-bottom: 0.6rem;
+}
+
+.counter-d { opacity: 0.85; }
+.counter-plus { font-size: 0.7em; }
+.counter-num {}
+
+.counter-since {
+  font-size: 0.85rem;
+  color: rgba(255, 200, 220, 0.55);
+  letter-spacing: 0.05em;
+}
+
+/* ── 메시지 ── */
+.message {
+  font-size: 1.15rem;
+  color: rgba(255, 220, 235, 0.9);
+  text-align: center;
+  line-height: 1.7;
+  padding: 0 0.5rem;
+}
+
+/* ── 기념일 카드 ── */
+.milestones {
+  width: 100%;
+  text-align: center;
+}
+
+.milestones-title {
+  font-size: 0.78rem;
+  color: rgba(255, 190, 215, 0.55);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+}
+
+.milestone-cards {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.milestone-card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 150, 185, 0.22);
+  border-radius: 18px;
+  padding: 1rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  min-width: 95px;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+.milestone-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 150, 185, 0.5);
+}
+
+.milestone-label {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffd1e6;
+}
+
+.milestone-date {
+  font-size: 0.7rem;
+  color: rgba(255, 200, 220, 0.6);
+}
+
+.milestone-left {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ff8cb5;
+}
+
+/* ── 처음 만난 날 ── */
+.first-met {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: rgba(255, 200, 225, 0.45);
+  letter-spacing: 0.04em;
+}
+
+.first-met-icon {
+  font-size: 0.9rem;
+}
+
+/* ── 반응형 ── */
+@media (max-width: 360px) {
+  .milestone-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+  .milestone-card {
+    width: 100%;
+    max-width: 220px;
+  }
+}
